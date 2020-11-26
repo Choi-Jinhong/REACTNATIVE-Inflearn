@@ -8,6 +8,7 @@ for (let val of array) {
 }
 
 // value 값이 생기면 저절로 키값이 생기는 것에만 가능
+// 즉, 배열은 가능하나 json 형식은 안됨 -> in을 사용하면 된다
 // EX1
 
 let obj = {
