@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 export default Header;
 
 // exampleFuntion = () => {}과 exampleFunction = () => ()의 차이는 ??
-// {}의 경우에는 return 할 객체가 없는 것 ()의 경우에는 return 할 객체가 있는 것이다.
+// {}의 경우에는 return이 있어야 함, ()의 경우에는 return이 없어야 함
 
 // jsx
 // javascript xml의 약자

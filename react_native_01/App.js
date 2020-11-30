@@ -7,23 +7,51 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Header from './src/header';
+import Generator from './src/generator'
+import NumList from './src/numlist'
 
 class App extends Component {
 
   state = {
     appName: 'My First App',
+    random: [36, 999]
+  }
+
+  onAddRandomNum = () => {
+    const randomNum = Math.floor(Math.random() * 100) + 1;
+    this.setState(prevState => {
+      return{
+        random: [...prevState.random, randomNum]
+      }
+    })
+  }
+
+  onNumDelete = (position) => {
+    const newArr = this.state.random.filter((num, index) => {
+      return position != index;
+    })
+    this.setState({
+      random: newArr
+    })
   }
 
   render() {
     return ( // return 값이 화면을 구성하게 됨
       <View style={styles.mainView}>
-        {/* <Header name={this.state.appName}/> */}
-        <Text
-          style={styles.mainText}
-          onPress={() => alert('text touch event')}
-        >Hello World!!</Text>
+        <Header name={this.state.appName} />
+        <View>
+          <Text
+            style={styles.mainText}
+            onPress={() => alert('text touch event')}
+          >Hello World!!</Text>
+        </View>
+        <Generator add={this.onAddRandomNum}/>
+        <NumList 
+          num={this.state.random}
+          delete={this.onNumDelete}
+        />
       </View>
     )
   }
@@ -35,7 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingTop: 50,
     alignItems: 'center', // 수평정렬
-    justifyContent: 'center' // 수직 정렬
   },
   subView: {
     backgroundColor: 'yellow',
