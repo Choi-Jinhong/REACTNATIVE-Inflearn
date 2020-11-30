@@ -8,20 +8,22 @@
 
 import React, { Component } from 'react';
 import { View, Text, StyleSheet} from 'react-native';
+import Header from './src/header';
 
 class App extends Component {
+
+  state = {
+    appName: 'My First App',
+  }
+
   render() {
     return ( // return 값이 화면을 구성하게 됨
       <View style={styles.mainView}>
-        <View style={styles.subView}>
-          <Text style={styles.mainText}>Hello World!!</Text>
-        </View>
-        <View style={styles.subView}>
-          <Text>Hello World!!</Text>
-        </View>
-        <View style={styles.anotherSubView}>
-          <Text style={styles.mainText}>Hello World!!</Text>
-        </View>
+        {/* <Header name={this.state.appName}/> */}
+        <Text
+          style={styles.mainText}
+          onPress={() => alert('text touch event')}
+        >Hello World!!</Text>
       </View>
     )
   }
@@ -30,16 +32,14 @@ class App extends Component {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     paddingTop: 50,
     alignItems: 'center', // 수평정렬
     justifyContent: 'center' // 수직 정렬
   },
   subView: {
-    flex: 1,
     backgroundColor: 'yellow',
     marginBottom: 10,
-    width: '50%',
   },
   anotherSubView: {
     flex: 2,
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mainText: {
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: 'red',
     padding: 20,
-  }
+  },
 })
 
 export default App;
