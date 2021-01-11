@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator'
 import NumList from './src/numlist'
@@ -22,7 +22,7 @@ class App extends Component {
   onAddRandomNum = () => {
     const randomNum = Math.floor(Math.random() * 100) + 1;
     this.setState(prevState => {
-      return{
+      return {
         random: [...prevState.random, randomNum]
       }
     })
@@ -47,11 +47,20 @@ class App extends Component {
             onPress={() => alert('text touch event')}
           >Hello World!!</Text>
         </View>
-        <Generator add={this.onAddRandomNum}/>
-        <NumList 
-          num={this.state.random}
-          delete={this.onNumDelete}
-        />
+        <Generator add={this.onAddRandomNum} />
+        <ScrollView 
+          style={{width: '100%'}}
+          // onMomentumScrollBegin={() => alert('Begin')} // 스크롤을 땡기고 놓으면 실행되는 함수
+          // onMomentumScrollEnd={() => alert('End')} // 스크롤의 움직임이 멈췄을 때 실행되는 함수
+          // onScroll={() => alert('Scrolling')} // 스크롤링 시 실행되는 함수
+          // onContentSizeChange={(width, height) => alert(height)} // 화면의 크기가 변경될 때마다 실행되는 함수
+          bounces={true} // 마지막에 튕기는 현상(true)
+        >
+          <NumList
+            num={this.state.random}
+            delete={this.onNumDelete}
+          />
+        </ScrollView>
       </View>
     )
   }
