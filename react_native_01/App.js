@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Button, Text, TextInput, ScrollView, Image } from 'react-native';
 import Input from './src/input';
 import Picker from './src/picker';
+import Modal from './src/modal';
 import KakaoLogo from './assets/images/kakaoBtn.png'
 import Steak from './assets/images/steak.jpg'
 
@@ -38,13 +39,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Image 
-          style={styles.image}
-          // source={{uri:'https://picsum.photos/id/237/200/300'}}
-          source={Steak}
-          resizeMode="contain"
-          onLoadEnd={() => alert('image loaded')} 
-        />
+        <Modal/>
       </View>
     );
   }
