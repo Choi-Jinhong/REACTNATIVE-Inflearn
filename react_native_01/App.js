@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button, Text, TextInput, ScrollView } from 'react-native';
 import Input from './src/input';
+import Picker from './src/picker'
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
+        <Picker/>
         <TextInput
           value={this.state.myTextInput}
           style={styles.input}
