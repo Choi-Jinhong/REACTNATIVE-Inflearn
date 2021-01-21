@@ -7,90 +7,85 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Header from './src/header';
-import Generator from './src/generator'
-import NumList from './src/numlist'
+import { StyleSheet, View, Button, Text, TextInput, ScrollView } from 'react-native';
+import Input from './src/input';
 
 class App extends Component {
 
   state = {
-    appName: 'My First App',
-    random: [36, 999]
+    myTextInput: "",
+    alphabet: ['a', 'b', 'c', 'd']
   }
 
-  onAddRandomNum = () => {
-    const randomNum = Math.floor(Math.random() * 100) + 1;
-    this.setState(prevState => {
+  onChangeInput = (event) => {
+    this.setState({
+      myTextInput: event
+    })
+  }
+
+  onAddTextInput = () => {
+    this.setState(prevState=>{
       return {
-        random: [...prevState.random, randomNum]
+        myTextInput: '',
+        alphabet: [...prevState.alphabet, prevState.myTextInput]
       }
     })
   }
 
-  onNumDelete = (position) => {
-    const newArr = this.state.random.filter((num, index) => {
-      return position != index;
-    })
-    this.setState({
-      random: newArr
-    })
-  }
-
   render() {
-    return ( // return 값이 화면을 구성하게 됨
+    return (
       <View style={styles.mainView}>
-        <Header name={this.state.appName} />
-        <View>
-          <Text
-            style={styles.mainText}
-            onPress={() => alert('text touch event')}
-          >Hello World!!</Text>
-        </View>
-        <Generator add={this.onAddRandomNum} />
-        <ScrollView 
-          style={{width: '100%'}}
-          // onMomentumScrollBegin={() => alert('Begin')} // 스크롤을 땡기고 놓으면 실행되는 함수
-          // onMomentumScrollEnd={() => alert('End')} // 스크롤의 움직임이 멈췄을 때 실행되는 함수
-          // onScroll={() => alert('Scrolling')} // 스크롤링 시 실행되는 함수
-          // onContentSizeChange={(width, height) => alert(height)} // 화면의 크기가 변경될 때마다 실행되는 함수
-          bounces={true} // 마지막에 튕기는 현상(true)
-        >
-          <NumList
-            num={this.state.random}
-            delete={this.onNumDelete}
-          />
+        <TextInput
+          value={this.state.myTextInput}
+          style={styles.input}
+          onChangeText={this.onChangeInput}
+          multiline={true}  // 다음줄로 넘어감
+          maxLength={100} // 최대 글자수
+          autoCapitalize={'none'} // 첫글자 대문자 막기
+        // editable={false} // 입력 막기
+        />
+        <Button
+          title="Add Text Input"
+          onPress={this.onAddTextInput}
+        />
+
+        <ScrollView style={{width: '100%'}}>
+          {
+            this.state.alphabet.map((item, idx) => (
+              <Text
+                style={ styles.mainText }
+                key={idx}
+              >
+                {item}
+              </Text>
+            ))
+          }
         </ScrollView>
       </View>
-    )
+    );
   }
-}
+};
 
 const styles = StyleSheet.create({
   mainView: {
-    flex: 1,
-    backgroundColor: 'white',
-    paddingTop: 50,
-    alignItems: 'center', // 수평정렬
-  },
-  subView: {
-    backgroundColor: 'yellow',
-    marginBottom: 10,
-  },
-  anotherSubView: {
-    flex: 2,
-    backgroundColor: 'yellow',
-    marginBottom: 10,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    textAlign: 'center',
+    justifyContent: 'center'
   },
   mainText: {
     fontSize: 20,
     fontWeight: 'normal',
     color: 'red',
     padding: 20,
-  },
-})
+    margin: 20,
+    backgroundColor: 'pink'
+  }, 
+  input: {
+    width: '100%',
+    backgroundColor: "#cecece",
+    marginTop: 50,
+    fontSize: 25,
+    padding: 10
+  }
+});
 
 export default App;

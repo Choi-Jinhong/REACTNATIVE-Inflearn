@@ -1,7 +1,6 @@
 /**
  * @format
  */
-// app의 메인 입구
 
 import {AppRegistry} from 'react-native';
 import App from './App';
