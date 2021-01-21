@@ -50,7 +50,6 @@ class App extends Component {
           title="Add Text Input"
           onPress={this.onAddTextInput}
         />
-
         <ScrollView style={{width: '100%'}}>
           {
             this.state.alphabet.map((item, idx) => (
