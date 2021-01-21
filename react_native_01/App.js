@@ -7,9 +7,11 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Button, Text, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, View, Button, Text, TextInput, ScrollView, Image } from 'react-native';
 import Input from './src/input';
-import Picker from './src/picker'
+import Picker from './src/picker';
+import KakaoLogo from './assets/images/kakaoBtn.png'
+import Steak from './assets/images/steak.jpg'
 
 class App extends Component {
 
@@ -36,32 +38,13 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Picker/>
-        <TextInput
-          value={this.state.myTextInput}
-          style={styles.input}
-          onChangeText={this.onChangeInput}
-          multiline={true}  // 다음줄로 넘어감
-          maxLength={100} // 최대 글자수
-          autoCapitalize={'none'} // 첫글자 대문자 막기
-        // editable={false} // 입력 막기
+        <Image 
+          style={styles.image}
+          // source={{uri:'https://picsum.photos/id/237/200/300'}}
+          source={Steak}
+          resizeMode="contain"
+          onLoadEnd={() => alert('image loaded')} 
         />
-        <Button
-          title="Add Text Input"
-          onPress={this.onAddTextInput}
-        />
-        <ScrollView style={{width: '100%'}}>
-          {
-            this.state.alphabet.map((item, idx) => (
-              <Text
-                style={ styles.mainText }
-                key={idx}
-              >
-                {item}
-              </Text>
-            ))
-          }
-        </ScrollView>
       </View>
     );
   }
@@ -69,8 +52,11 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   mainView: {
-    textAlign: 'center',
-    justifyContent: 'center'
+    flex: 1,
+    backgroundColor:'white',
+    paddingTop: 50,
+    alignItems: 'center',
+    // justifyContent: 'center'
   },
   mainText: {
     fontSize: 20,
@@ -86,6 +72,10 @@ const styles = StyleSheet.create({
     marginTop: 50,
     fontSize: 25,
     padding: 10
+  },
+  image: {
+    width: '100%',
+    height: 700
   }
 });
 
