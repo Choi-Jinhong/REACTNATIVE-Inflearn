@@ -23,7 +23,8 @@ class UserScreen extends Component {
             headerTitleStyle: {
                 fontWeight: 'bold',
                 color: 'green'
-            }
+            },
+            headerBackTitle: 'BACK'
         })
     }
 
