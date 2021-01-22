@@ -17,6 +17,7 @@ import UserScreen from './src/user';
 import DrawerHomeScreen from './src/home_drawer';
 import DrawerUserScreen from './src/user_drawer';
 import LogoTitle from './src/logo';
+import SideDrawer from './src/my_drawer'
 import { Linking } from 'react-native';
 import PictorgramHome from './assets/images/kakaoBtn.png'
 
@@ -34,22 +35,22 @@ class App extends Component {
   //   )
   // }
 
-  customDrawerConetent = (props) => {
-    return(
-      <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props}/>
-        <DrawerItem
-          label="Help"
-          onPress={() => Linking.openURL('http://www.google.com')}
-          icon={() => <LogoTitle/>}
-        />
-        <DrawerItem
-          label="Info"
-          onPress={() => alert('Info Window')}
-        />
-      </DrawerContentScrollView>
-    );
-  }
+  // customDrawerConetent = (props) => {
+  //   return(
+  //     <DrawerContentScrollView {...props}>
+  //       <DrawerItemList {...props}/>
+  //       <DrawerItem
+  //         label="Help"
+  //         onPress={() => Linking.openURL('http://www.google.com')}
+  //         icon={() => <LogoTitle/>}
+  //       />
+  //       <DrawerItem
+  //         label="Info"
+  //         onPress={() => alert('Info Window')}
+  //       />
+  //     </DrawerContentScrollView>
+  //   );
+  // }
 
   render() {
     return (
@@ -66,7 +67,7 @@ class App extends Component {
             activeTintColor: "red",
             activeBackgroundColor: "skyblue"
           }}
-          drawerContent={props => <this.customDrawerConetent {...props}/>}
+          drawerContent={props => <SideDrawer {...props}/>}
         >
           <Drawer.Screen
             name="Home"
