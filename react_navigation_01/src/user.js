@@ -12,13 +12,28 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 
 
 class UserScreen extends Component {
-    render() {
 
+    headerStyle = () => {
+        this.props.navigation.setOptions({
+            title: 'Customiziong',
+            headerStyle: {
+                backgroundColor: 'blue'
+            },
+            headerTintColor: 'yellow',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: 'green'
+            }
+        })
+    }
+
+    render() {
+        this.headerStyle();
         const { params } = this.props.route;
         const userIdx = params ? params.userIdx : null;
         const userName = params ? params.userName : null;
         const userLastName = params ? params.userLastName : null;
-        
+
         return (
             <View style={{
                 flex: 1,
