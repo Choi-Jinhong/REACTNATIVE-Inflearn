@@ -18,6 +18,7 @@ import DrawerHomeScreen from './src/home_drawer';
 import DrawerUserScreen from './src/user_drawer';
 import LogoTitle from './src/logo';
 import { Linking } from 'react-native';
+import PictorgramHome from './assets/images/kakaoBtn.png'
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -40,6 +41,7 @@ class App extends Component {
         <DrawerItem
           label="Help"
           onPress={() => Linking.openURL('http://www.google.com')}
+          icon={() => <LogoTitle/>}
         />
         <DrawerItem
           label="Info"
@@ -69,6 +71,14 @@ class App extends Component {
           <Drawer.Screen
             name="Home"
             component={DrawerHomeScreen}
+            options={{
+              drawerIcon: () => (
+                <Image
+                  source={PictorgramHome}
+                  style={{width: 40, height: 40}}
+                />
+              )
+            }}
           />
           <Drawer.Screen
             name="User"

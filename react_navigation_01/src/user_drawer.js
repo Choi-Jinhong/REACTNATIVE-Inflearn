@@ -8,12 +8,24 @@
 
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
+import Logo2 from '../assets/pics/homeIcon.png'
 
 class DrawerUserScreen extends Component {
 
+    drawerStyle = () => {
+        this.props.navigation.setOptions({
+            drawerIcon: () => (
+                <Image
+                    source={Logo2}
+                    style={{ width: 40, height: 40 }}
+                />
+            )
+        })
+    }
+
     render() {
+        this.drawerStyle();
         return (
             <View style={{
                 flex: 1,
