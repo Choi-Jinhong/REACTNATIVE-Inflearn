@@ -1,0 +1,30 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
+
+class TabUserScreen extends Component {
+    render() {
+        console.warn(this.props.route);
+        return (
+            <View style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <Text>User Screen</Text>
+            </View>
+        );
+    }
+};
+
+const styles = StyleSheet.create({
+    
+});
+
+export default TabUserScreen;
